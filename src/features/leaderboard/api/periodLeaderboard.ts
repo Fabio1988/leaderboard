@@ -12,7 +12,7 @@ const periodLeaderboardQuery = `
          trainer.team                                                                    AS team,
          trainer.last_seen                                                               AS last_seen,
          trainer.level - trainer_history.level                                           AS level,
-         trainer.xp - trainer_history.xp                                                 AS xp,
+         IF(trainer.xp >= trainer_history.xp, trainer.xp - trainer_history.xp, 0)        AS xp,
          trainer.battles_won - trainer_history.battles_won                               AS battles_won,
          trainer.km_walked - trainer_history.km_walked                                   AS km_walked,
          trainer.caught_pokemon - trainer_history.caught_pokemon                         AS caught_pokemon,
